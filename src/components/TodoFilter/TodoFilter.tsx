@@ -19,7 +19,9 @@ export const TodoFilter: React.FC<Props> = ({
           <select
             data-cy="statusSelect"
             value={filter}
-            onChange={e => setFilter(e.target.value as never)}
+            onChange={e =>
+              setFilter(e.target.value as 'all' | 'active' | 'completed')
+            }
           >
             <option value="all">All</option>
             <option value="active">Active</option>
@@ -43,12 +45,14 @@ export const TodoFilter: React.FC<Props> = ({
 
         <span className="icon is-right" style={{ pointerEvents: 'all' }}>
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button
-            data-cy="clearSearchButton"
-            type="button"
-            className="delete"
-            onClick={() => setSearch('')}
-          />
+          {search && (
+            <button
+              data-cy="clearSearchButton"
+              type="button"
+              className="delete"
+              onClick={() => setSearch('')}
+            />
+          )}
         </span>
       </p>
     </form>

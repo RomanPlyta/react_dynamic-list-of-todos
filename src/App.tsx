@@ -78,7 +78,10 @@ export const App: React.FC = () => {
         <TodoModal
           todo={selectedTodo}
           setActiveId={setActiveId}
-          onClose={() => setSelectedTodo(null)}
+          onClose={() => {
+            setSelectedTodo(null);
+            setActiveId(null);
+          }}
         />
       )}
     </>
